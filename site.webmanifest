@@ -1,0 +1,39 @@
+{
+  "name": "InvoicePro - Free Invoice Generator",
+  "short_name": "InvoicePro",
+  "description": "Create professional invoices in seconds. Free, no login required, instant PDF download.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f6f8",
+  "theme_color": "#195de6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "finance", "productivity"],
+  "screenshots": [
+    {
+      "src": "screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}

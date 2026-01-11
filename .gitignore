@@ -1,0 +1,28 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore node_modules if you add any build tools later
+node_modules/
+package-lock.json
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore generated favicons (until you create proper ones)
+# favicon-*.png
+# apple-touch-icon.png
+
+# Keep the artifact/brain folder out of the repo
+.gemini/
