@@ -1,3 +1,43 @@
+/*
+=====================================================
+INVOICEPRO - STYLESHEET
+=====================================================
+
+DESIGN SYSTEM:
+- Primary Color: #195de6 (SaaS Blue)
+- Background: #f6f6f8 (Soft Grey-White)
+- Typography: Playfair Display (headings) + Inter (body)
+- Border Radius: 12px (cards), 8px (inputs/buttons)
+- Shadows: Extremely soft (0 2px 8px rgba(0,0,0,0.04))
+- Transitions: 300ms ease for all interactions
+
+RESPONSIVE BREAKPOINTS:
+- Desktop: 1024px+
+- Tablet: 768px - 1023px
+- Mobile: < 768px
+
+SECTIONS:
+1. CSS Variables & Design System
+2. Global Styles & Reset
+3. Background Glow Effects
+4. Navigation Bar
+5. Typography
+6. Buttons
+7. Cards & Badges
+8. Hero Section
+9. Invoice Generator (Form + Preview)
+10. Features Section
+11. How It Works Section
+12. Trust Section
+13. Future Tools Section
+14. Footer
+15. AdSense Placeholders
+16. Animations
+17. Responsive Design
+
+=====================================================
+*/
+
 /* ============================================
    CSS Variables & Design System
    ============================================ */
@@ -950,6 +990,76 @@ textarea:focus {
     border-radius: 12px;
     font-size: 12px;
     font-weight: 600;
+}
+
+/* ============================================
+   AdSense Placeholders
+   ============================================ */
+.adsense-section {
+    padding: 40px 0;
+    background: var(--white);
+}
+
+.adsense-placeholder {
+    min-height: 250px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f0 100%);
+    border-radius: var(--card-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border-light);
+    position: relative;
+}
+
+.adsense-label {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   Validation Messages
+   ============================================ */
+.validation-message {
+    background: #fee;
+    border: 2px solid #fcc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    color: #d00;
+    font-size: 14px;
+    font-weight: 600;
+    animation: slideDown 0.3s ease;
+}
+
+.validation-message.success {
+    background: #efe;
+    border-color: #cfc;
+    color: #060;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   Lock Icon for Future Tools
+   ============================================ */
+.lock-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 24px;
+    opacity: 0.5;
 }
 
 /* ============================================

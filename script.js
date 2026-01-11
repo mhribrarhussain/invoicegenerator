@@ -1,5 +1,26 @@
 // ============================================
-// Invoice Generator - Main JavaScript
+// INVOICEPRO - MAIN JAVASCRIPT
+// ============================================
+//
+// FEATURES:
+// ✅ Auto-generated invoice numbers (INV-YYYYMMDD-XXXX)
+// ✅ Real-time live preview updates
+// ✅ Dynamic item management (add/remove rows)
+// ✅ Multi-currency support (USD, PKR, EUR, GBP, INR)
+// ✅ Auto-calculations (subtotal, tax, total)
+// ✅ Inline form validation
+// ✅ PDF generation with jsPDF
+// ✅ Payment terms & notes support
+// ✅ Responsive navbar (sticky + mobile menu)
+// ✅ Smooth scroll navigation
+// ✅ Intersection Observer animations
+//
+// TECH:
+// - Pure Vanilla JavaScript (ES6+)
+// - jsPDF for PDF generation
+// - No dependencies or frameworks
+// - Client-side only (no backend)
+//
 // ============================================
 
 // Initialize on page load
@@ -288,6 +309,21 @@ function updatePreviewItemsTable(items) {
 // Form Validation
 // ============================================
 
+function showValidationMessage(message, type = 'error') {
+    const messageDiv = document.getElementById('validationMessage');
+    messageDiv.textContent = message;
+    messageDiv.className = 'validation-message' + (type === 'success' ? ' success' : '');
+    messageDiv.style.display = 'block';
+    
+    // Scroll to message
+    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        messageDiv.style.display = 'none';
+    }, 5000);
+}
+
 function validateForm() {
     const businessName = document.getElementById('businessName').value.trim();
     const clientName = document.getElementById('clientName').value.trim();
@@ -295,26 +331,26 @@ function validateForm() {
     const items = getInvoiceItems();
     
     if (!businessName) {
-        alert('Please enter your business name');
+        showValidationMessage('⚠️ Please enter your business name');
         document.getElementById('businessName').focus();
         return false;
     }
     
     if (!clientName) {
-        alert('Please enter client name');
+        showValidationMessage('⚠️ Please enter client name');
         document.getElementById('clientName').focus();
         return false;
     }
     
     if (!invoiceDate) {
-        alert('Please select an invoice date');
+        showValidationMessage('⚠️ Please select an invoice date');
         document.getElementById('invoiceDate').focus();
         return false;
     }
     
     const hasValidItem = items.some(item => item.name && item.quantity > 0 && item.price > 0);
     if (!hasValidItem) {
-        alert('Please add at least one valid item with name, quantity, and price');
+        showValidationMessage('⚠️ Please add at least one valid item with name, quantity, and price');
         return false;
     }
     
@@ -329,6 +365,9 @@ function generateInvoicePreview() {
     if (!validateForm()) {
         return;
     }
+    
+    // Show success message
+    showValidationMessage('✅ Invoice generated successfully! Check the preview on the right.', 'success');
     
     // Scroll to preview
     const preview = document.querySelector('.preview-card');

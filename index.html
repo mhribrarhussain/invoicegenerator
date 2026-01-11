@@ -1,4 +1,35 @@
 <!DOCTYPE html>
+<!--
+=====================================================
+INVOICEPRO - FREE ONLINE INVOICE GENERATOR
+=====================================================
+
+FEATURES IMPLEMENTED:
+✅ Modern SaaS Design - Clean, professional UI with Playfair Display + Inter fonts
+✅ Sticky Navbar - Floating glassmorphic navbar with smooth scroll effect
+✅ Responsive Mobile-First - Perfect on all devices (desktop, tablet, mobile)
+✅ Invoice Generator - Auto-generated invoice numbers, dynamic items, live preview
+✅ Multi-Currency - Support for USD, PKR, EUR, GBP, INR
+✅ Payment Terms & Notes - Collapsible optional fields
+✅ Real-Time Calculations - Auto-calc subtotal, tax, total
+✅ PDF Generation - Professional PDF with jsPDF library
+✅ Live Preview - Real-time invoice preview as you type
+✅ Form Validation - Inline validation messages
+✅ SEO Optimized - Comprehensive meta tags, structured data, Open Graph
+✅ Smooth Animations - Fade-ins, hover effects, smooth scroll
+✅ AdSense Ready - Placeholder sections for monetization
+✅ 7 Sections - Hero, Generator, Features, How It Works, Trust, Future Tools, Footer
+
+TECH STACK:
+- Pure HTML5, CSS3, Vanilla JavaScript
+- jsPDF for PDF generation
+- Google Fonts (Playfair Display + Inter)
+- No backend required - 100% client-side
+
+REPOSITORY: https://github.com/mhribrarhussain/invoicegenerator
+AUTHOR: M Hribrar Hussain
+=====================================================
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -195,6 +226,16 @@
         </div>
     </section>
 
+    <!-- AdSense Placeholder 1 - Below Hero -->
+    <section class="adsense-section">
+        <div class="container">
+            <div class="adsense-placeholder">
+                <p class="adsense-label">Advertisement</p>
+                <!-- Google AdSense code will go here -->
+            </div>
+        </div>
+    </section>
+
     <!-- Invoice Generator Tool Section -->
     <section id="invoice-generator" class="generator-section">
         <div class="container">
@@ -202,6 +243,8 @@
                 <span class="badge">Free Tool</span>
                 <h2>Invoice Generator</h2>
                 <p>Fill in the details below and watch your invoice come to life</p>
+                <!-- Validation Messages -->
+                <div id="validationMessage" class="validation-message" style="display: none;"></div>
             </div>
             
             <div class="generator-grid">
@@ -380,6 +423,16 @@
         </div>
     </section>
 
+    <!-- AdSense Placeholder 2 - Between Generator and Features -->
+    <section class="adsense-section">
+        <div class="container">
+            <div class="adsense-placeholder">
+                <p class="adsense-label">Advertisement</p>
+                <!-- Google AdSense code will go here -->
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section id="features" class="features-section">
         <div class="container">
@@ -490,6 +543,7 @@
             
             <div class="future-grid">
                 <div class="future-card card disabled">
+                    <div class="lock-icon">🔒</div>
                     <div class="future-icon">📄</div>
                     <h3>Resume Builder</h3>
                     <p>Create professional resumes with customizable templates</p>
@@ -497,6 +551,7 @@
                 </div>
                 
                 <div class="future-card card disabled">
+                    <div class="lock-icon">🔒</div>
                     <div class="future-icon">💰</div>
                     <h3>EMI Calculator</h3>
                     <p>Calculate loan EMIs and payment schedules instantly</p>
@@ -504,6 +559,7 @@
                 </div>
                 
                 <div class="future-card card disabled">
+                    <div class="lock-icon">🔒</div>
                     <div class="future-icon">✉️</div>
                     <h3>Cover Letter Generator</h3>
                     <p>Generate compelling cover letters for job applications</p>
@@ -511,6 +567,7 @@
                 </div>
                 
                 <div class="future-card card disabled">
+                    <div class="lock-icon">🔒</div>
                     <div class="future-icon">🤖</div>
                     <h3>AI Prompt Generator</h3>
                     <p>Create effective AI prompts for ChatGPT and other tools</p>
