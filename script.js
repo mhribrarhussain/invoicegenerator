@@ -83,6 +83,23 @@ function attachEventListeners() {
     document.getElementById('clientName').addEventListener('input', updatePreview);
     document.getElementById('invoiceDate').addEventListener('change', updatePreview);
     document.getElementById('taxRate').addEventListener('input', updateCalculations);
+    document.getElementById('currency').addEventListener('change', updateCalculations);
+    document.getElementById('paymentTerms').addEventListener('input', updatePreview);
+    document.getElementById('invoiceNotes').addEventListener('input', updatePreview);
+    
+    // Toggle optional fields
+    document.getElementById('toggleOptional').addEventListener('click', function() {
+        const optionalFields = document.getElementById('optionalFields');
+        const toggleBtn = this.querySelector('span');
+        
+        if (optionalFields.style.display === 'none') {
+            optionalFields.style.display = 'block';
+            toggleBtn.textContent = '− Hide Payment Terms / Notes';
+        } else {
+            optionalFields.style.display = 'none';
+            toggleBtn.textContent = '+ Add Payment Terms / Notes';
+        }
+    });
     
     // Add item button
     document.getElementById('addItemBtn').addEventListener('click', addNewItem);
@@ -110,12 +127,39 @@ function updatePreview() {
     const businessName = document.getElementById('businessName').value || 'Your Business Name';
     const clientName = document.getElementById('clientName').value || 'Client Name';
     const invoiceDate = document.getElementById('invoiceDate').value;
+    const paymentTerms = document.getElementById('paymentTerms').value;
+    const invoiceNotes = document.getElementById('invoiceNotes').value;
     
     document.getElementById('previewBusinessName').textContent = businessName;
     document.getElementById('previewClientName').textContent = clientName;
     
     if (invoiceDate) {
         document.getElementById('previewDate').textContent = formatDate(invoiceDate);
+    }
+    
+    // Update payment terms and notes
+    const notesSection = document.getElementById('previewNotesSection');
+    const paymentTermsDiv = document.getElementById('previewPaymentTermsDiv');
+    const invoiceNotesDiv = document.getElementById('previewInvoiceNotesDiv');
+    
+    if (paymentTerms || invoiceNotes) {
+        notesSection.style.display = 'block';
+        
+        if (paymentTerms) {
+            paymentTermsDiv.style.display = 'block';
+            document.getElementById('previewPaymentTerms').textContent = paymentTerms;
+        } else {
+            paymentTermsDiv.style.display = 'none';
+        }
+        
+        if (invoiceNotes) {
+            invoiceNotesDiv.style.display = 'block';
+            document.getElementById('previewInvoiceNotes').textContent = invoiceNotes;
+        } else {
+            invoiceNotesDiv.style.display = 'none';
+        }
+    } else {
+        notesSection.style.display = 'none';
     }
     
     updateCalculations();
@@ -139,7 +183,7 @@ function addNewItem() {
             <input type="number" class="item-quantity" value="1" min="1" required>
         </div>
         <div class="form-group">
-            <label>Price ($)</label>
+            <label>Price</label>
             <input type="number" class="item-price" value="0" min="0" step="0.01" required>
         </div>
         <button type="button" class="btn-remove" onclick="removeItem(this)">✕</button>
@@ -425,6 +469,37 @@ function downloadPDF() {
     doc.setTextColor(25, 93, 230);
     doc.text(formatCurrency(total), pageWidth - 25, yPos, { align: 'right' });
     
+    yPos += 20;
+    
+    // Payment Terms and Notes
+    const paymentTerms = document.getElementById('paymentTerms').value;
+    const invoiceNotes = document.getElementById('invoiceNotes').value;
+    
+    if (paymentTerms) {
+        doc.setTextColor(0);
+        doc.setFontSize(11);
+        doc.setFont(undefined, 'bold');
+        doc.text('Payment Terms:', 20, yPos);
+        yPos += 6;
+        doc.setFont(undefined, 'normal');
+        doc.setFontSize(10);
+        doc.text(paymentTerms, 20, yPos);
+        yPos += 12;
+    }
+    
+    if (invoiceNotes) {
+        doc.setTextColor(0);
+        doc.setFontSize(11);
+        doc.setFont(undefined, 'bold');
+        doc.text('Notes:', 20, yPos);
+        yPos += 6;
+        doc.setFont(undefined, 'normal');
+        doc.setFontSize(10);
+        const notesLines = doc.splitTextToSize(invoiceNotes, pageWidth - 40);
+        doc.text(notesLines, 20, yPos);
+        yPos += (notesLines.length * 5) + 10;
+    }
+    
     // Footer
     yPos = doc.internal.pageSize.height - 20;
     doc.setFontSize(9);
@@ -442,7 +517,17 @@ function downloadPDF() {
 // ============================================
 
 function formatCurrency(amount) {
-    return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    const currency = document.getElementById('currency').value;
+    const symbols = {
+        'USD': '$',
+        'PKR': '₨',
+        'EUR': '€',
+        'GBP': '£',
+        'INR': '₹'
+    };
+    
+    const symbol = symbols[currency] || '$';
+    return symbol + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
 function formatDate(dateString) {

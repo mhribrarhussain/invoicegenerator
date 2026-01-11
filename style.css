@@ -515,6 +515,91 @@ p {
     background: #fcc;
 }
 
+/* Form Select */
+.form-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    transition: var(--transition);
+    background: var(--white);
+    cursor: pointer;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    transition: var(--transition);
+    resize: vertical;
+    min-height: 80px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+/* Optional Fields Section */
+.optional-section {
+    border-top: 2px solid var(--bg-light);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.toggle-optional {
+    background: transparent;
+    border: 2px dashed var(--border-light);
+    border-radius: 8px;
+    padding: 12px 20px;
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-optional:hover {
+    border-color: var( --primary-blue);
+    color: var(--primary-blue);
+    background: var(--primary-light);
+}
+
+.optional-fields {
+    margin-top: 16px;
+    padding-top: 16px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Totals Display */
 .totals-display {
     border-top: 2px solid var(--bg-light);
@@ -641,6 +726,34 @@ p {
     border-top: 2px solid var(--bg-light);
     padding-top: 12px;
     margin-top: 8px;
+}
+
+/* Preview Notes Section */
+.preview-notes {
+    border-top: 2px solid var(--bg-light);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.preview-payment-terms,
+.preview-invoice-notes {
+    margin-bottom: 16px;
+}
+
+.preview-payment-terms strong,
+.preview-invoice-notes strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.preview-payment-terms p,
+.preview-invoice-notes p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+    white-space: pre-wrap;
 }
 
 /* ============================================
