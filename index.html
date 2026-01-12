@@ -185,7 +185,8 @@ AUTHOR: M Hribrar Hussain
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#invoice-generator">Generator</a></li>
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 
                 <button class="btn btn-primary btn-nav" onclick="scrollToInvoice()">Get Started</button>
@@ -604,7 +605,58 @@ AUTHOR: M Hribrar Hussain
                 </div>
             </div>
         </div>
+        </div>
     </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="features-section" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our invoice generator</p>
+            </div>
+            
+            <div class="faq-grid" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+                <div class="card" style="text-align: left;">
+                    <h3>Is this invoice generator really free?</h3>
+                    <p>Yes, InvoicePro is completely free to use. You can generate unlimited invoices without paying anything.</p>
+                </div>
+                <div class="card" style="text-align: left;">
+                    <h3>Do you store my invoice data?</h3>
+                    <p>No. We process everything locally in your browser to ensuring your privacy. Your data is never sent to our servers.</p>
+                </div>
+                <div class="card" style="text-align: left;">
+                    <h3>Can I change the currency?</h3>
+                    <p>Yes, we support multiple currencies including USD, EUR, GBP, PKR, and INR. You can select your preferred currency from the dropdown.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" style="position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); padding: 20px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); z-index: 9999; display: none; align-items: center; justify-content: space-between; gap: 20px;">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 20px;">
+            <p style="margin: 0; font-size: 14px; color: var(--text-dark);">
+                We use cookies to improve your experience and show personalized ads. By using our site, you agree to our <a href="privacy.html">Privacy Policy</a>.
+            </p>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="acceptCookies()" class="btn btn-primary" style="padding: 8px 16px; font-size: 14px;">Accept</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Simple Cookie Logic
+        function acceptCookies() {
+            document.getElementById('cookieBanner').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        }
+        
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieBanner').style.display = 'flex';
+            }
+        });
+    </script>
 
     <!-- Footer -->
     <footer class="footer">
@@ -613,7 +665,8 @@ AUTHOR: M Hribrar Hussain
                 <div class="footer-links">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
-                    <a href="#contact">Contact</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
                 </div>
                 <div class="footer-copyright">
                     <p>&copy; 2026 Invoice Generator. All rights reserved.</p>
